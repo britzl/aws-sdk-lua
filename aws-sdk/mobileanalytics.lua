@@ -289,7 +289,6 @@ end
 
 
 local content_type = require "aws-sdk.core.content_type"
-local scheme_mapper = require "aws-sdk.core.scheme_mapper"
 local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
@@ -323,7 +322,7 @@ function M.init(config)
 	settings.protocol = M.metadata.protocol
 	settings.region = config.region
 	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
-	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
+	settings.uri = (config.scheme or "https") .. "://" .. settings.endpoint
 end
 
 
