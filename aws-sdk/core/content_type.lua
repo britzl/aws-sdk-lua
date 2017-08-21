@@ -15,18 +15,18 @@ M.AMZN_XML_CONTENT_TYPE = "application/xml"
 -- @return content_type The content type string, or nil if protocol is unknown
 -- @return error_message
 function M.from_protocol(protocol, version)
-	if protocol == "json" then
+	if protocol == "json" or protocol == "rest-json" then
 		if version == "1.1" then
 			return M.AMZN_JSON_CONTENT_TYPE_1_1
 		else
 			return M.AMZN_JSON_CONTENT_TYPE_1_0
 		end
-	elseif protocol == "xml" then
+	elseif protocol == "rest-xml" then
 		return M.AMZN_XML_CONTENT_TYPE
 	elseif protocol == "query" then
 		return M.FORM_CONTENT_TYPE
 	else
-		return nil, "Unknown protocol and/or version"
+		return nil, ("Unknown protocol '%s' and/or version '%s'"):format(protocol, version)
 	end
 end
 
