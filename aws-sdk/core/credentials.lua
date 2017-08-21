@@ -13,4 +13,8 @@ function M.get()
 	return credentials.access_key, credentials.secret_access_key
 end
 
+function M.is_empty()
+	return credentials.access_key == nil and credentials.secret_access_key == nil
+end
+
 return M
