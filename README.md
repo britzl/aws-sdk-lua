@@ -18,8 +18,33 @@ Or point to the ZIP file of a [specific release](https://github.com/britzl/aws-s
 ### LuaRocks
 The SDK is currently not distributed via LuaRocks. LuaRocks distribution will happen once the SDK is stable and moved out of beta.
 
-## Usage and Getting Started
-More here soon
+## Usage
+Using the AWS SDK for Lua is a simple process requiring only a few steps of configuration:
+
+	-- Configure AWS to work with Defold (specifically to use http.request() provided by the Defold engine to make HTTP calls)
+	local config = require "aws-skd.core.config"
+	config.use_defold()		-- or config.use_corona() or config.use_luasocket()
+
+	-- Set access key and secret access key from game.project
+	local credentials = require "aws-sdk.core.credentials"
+	credentials.set(sys.get_config("aws.access_key"), sys.get_config("aws.secret_access_key"))
+
+	-- Initialise the AWS service to use, in this case GameLift
+	local gamelift = require "aws-sdk.gamelift"
+	gamelift.init({ region = "eu-central-1" })
+
+	-- Make a call to a GameLift endpoint
+	local input = gamelift.CreateGameSessionInput({
+		CreatorId = "c6e209af-4ac0-47b4-c752-60f81db6d2d0",
+		AliasId = "alias-4cfbed10-a54d-4e9f-8bc0-ba7f98a6ef40",
+		Name = "My session",
+		MaximumPlayerSessionCount = 10
+	})
+	gamelift.CreateGameSessionAsync(input, function(response, error_message)
+		if not error_message then
+			print(response.GameSession.GameSessionId)
+		end
+	end)
 
 ### Known Limitations
 GameLift is the only service that has been properly tested.
@@ -28,9 +53,7 @@ GameLift is the only service that has been properly tested.
 ## Generating code
 The SDK generates the code for all AWS services, their input and output including input validation. The code generator uses official AWS SDK API definitions from the [AWS SDK for Javascript project](https://github.com/aws/aws-sdk-js/tree/master/apis). The code generator uses a [Mustache template](https://mustache.github.io/) and a small Python script to parse the API definitions and outputs one Lua file per AWS service. You can run the generator yourself from a terminal:
 
-````
-python generate.py
-````
+	python generate.py
 
 The script reads the definition files from ````apis/```` folder and outputs generated code to the ````aws-sdk/```` folder.
 

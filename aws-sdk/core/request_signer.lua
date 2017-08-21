@@ -9,6 +9,7 @@ local Stream = require "aws-sdk.lockbox.util.stream"
 local Array = require "aws-sdk.lockbox.util.array"
 
 local request_headers = require "aws-sdk.core.request_headers"
+local credentials = require "aws-sdk.core.credentials"
 
 local M = {}
 
@@ -63,11 +64,8 @@ function M.sign_post_request_v4(request_uri, request_parameters, headers, settin
 	local service = settings.service
 	local region = settings.region
 
-
-	-- Read AWS access key from game.project
-	local access_key = sys.get_config("aws.access_key")
-	local secret_key = sys.get_config("aws.secret_access_key")
-	assert(access_key and secret_key, "No access key or secret key defined in game.project")
+	local access_key, secret_key = credentials.get()
+	assert(access_key and secret_key, "No access key or secret key set")
 
 	-- Create a date for headers and the credential string
 	local amz_date = headers[request_headers.AWS_DATE_HEADER]
