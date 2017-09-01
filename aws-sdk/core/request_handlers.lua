@@ -9,17 +9,21 @@ local M = {}
 
 
 function M.post(base_uri, request_uri, input, headers, settings, cb)
+	print(base_uri, request_uri, input, headers, settings, cb)
 	local post_data = content_encoder.encode(settings.protocol, input)
 
 	if not credentials.is_empty() then
 		if settings.signature_version == "v4" then
 			headers[request_headers.AWS_DATE_HEADER] = os.date('!%Y%m%dT%H%M%SZ')
 			headers[request_headers.HOST_HEADER] = settings.endpoint
-			local authorization = request_signer.sign_post_request_v4(request_uri, post_data, headers, settings)
+			local authorization = request_signer.sign_request_v4("POST", request_uri, post_data, headers, settings)
 			headers[request_headers.AUTHORIZATION_HEADER] = authorization
 			headers[request_headers.HOST_HEADER] = nil
+			pprint(headers)
 		else
-			cb(false, ("Unsupported signatureVersion %s"):format(settings.signature_version))
+			print(("Unsupported signatureVersion %s"):format(settings.signature_version or "foo"))
+			pprint(settings)
+			cb(false, ("Unsupported signatureVersion %s"):format(settings.signature_version or "foo"))
 			return
 		end
 	end

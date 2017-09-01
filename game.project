@@ -1,5 +1,6 @@
 [project]
 title = AWS-SDK-Lua
+dependencies = https://github.com/britzl/deftest/archive/1.2.zip
 
 [display]
 width = 1136
@@ -10,3 +11,7 @@ shared_state = 1
 
 [library]
 include_dirs = aws-sdk
+
+[bootstrap]
+main_collection = /tests/test.collectionc
+

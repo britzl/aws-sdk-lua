@@ -10,23 +10,38 @@ local Array = require "aws-sdk.lockbox.util.array"
 
 local request_headers = require "aws-sdk.core.request_headers"
 local credentials = require "aws-sdk.core.credentials"
+local strut = require "aws-sdk.utils.strut"
+
 
 local M = {}
+
+
+local function log(...)
+	print(...)
+end
+
 
 
 local function sign(key, msg)
 	return hmac().setDigest(sha2_sha256).setKey(key).init().update(Stream.fromString(msg)).finish().asHex()
 end
 
-local function get_signature_key(key, date_stamp, regionName, serviceName)
+function M.get_signature_key(key, date_stamp, region_name, service_name)
 	local kDate = sign(Array.fromString('AWS4' .. key), date_stamp)
-	local kRegion = sign(Array.fromHex(kDate), regionName)
-	local kService = sign(Array.fromHex(kRegion), serviceName)
+	local kRegion = sign(Array.fromHex(kDate), region_name)
+	local kService = sign(Array.fromHex(kRegion), service_name)
 	local kSigning = sign(Array.fromHex(kService), 'aws4_request')
-	return kSigning
+	return kSigning, kService, kRegion, kDate
 end
 
-local function get_canonical_and_signed_headers(headers)
+-- Create the canonical headers. Header names must be trimmed
+-- and lowercase, and sorted in code point order from low to high.
+-- Create the list of signed headers. This lists the headers
+-- in the canonical_headers list, delimited with ";" and in alpha order.
+-- Note: The request can include any headers; canonical_headers and
+-- signed_headers include those that you want to be included in the
+-- hash of the request. "Host" and "x-amz-date" are always required.
+function create_canonical_and_signed_headers(headers)
 	-- get list of headers
 	local header_names = {}
 	for header,_ in pairs(headers) do
@@ -51,62 +66,69 @@ local function get_canonical_and_signed_headers(headers)
 	return canonical_headers, signed_headers
 end
 
-function M.sign_post_request_v4(request_uri, request_parameters, headers, settings)
+
+-- Create the canonical query string. Query string values must
+-- be URL-encoded (space=%20). The parameters must be sorted by name.
+function create_canonical_query_string(query_string)
+	if query_string == "" then
+		return ""
+	end
+	local kvp = strut.split(query_string, "&")
+	table.sort(kvp)
+	for i,kv in ipairs(kvp) do
+		local key, value = kv:match("(.-)=(.*)")
+		key = strut.urlencode(key)
+		value = strut.urlencode(value)
+		kvp[i] = key .. "=" .. value
+	end
+	return table.concat(kvp, "&")
+end
+
+
+function M.sign_request_v4(method, request_uri, request_parameters, headers, settings)
+	assert(method, "You must provide a method")
 	assert(request_uri, "You must provide a request uri")
 	assert(request_parameters, "You must provide request parameters")
 	assert(headers, "You must provide a headers table")
 	assert(settings, "You must provide a settings table")
-	assert(headers[request_headers.AMZ_TARGET_HEADER], "You must specify the x-amz-target header")
-	assert(headers[request_headers.CONTENT_TYPE_HEADER], "You must specify the content-type header")
+--	assert(headers[request_headers.AMZ_TARGET_HEADER], "You must specify the x-amz-target header")
+--	assert(headers[request_headers.CONTENT_TYPE_HEADER], "You must specify the content-type header")
 	assert(headers[request_headers.AWS_DATE_HEADER], "You must specify the x-amz-date header")
 	assert(headers[request_headers.HOST_HEADER], "You must specify the host header")
-	local method = 'POST'
 	local service = settings.service
 	local region = settings.region
 
-	local access_key, secret_key = credentials.get()
+	local access_key, secret_key, security_token = credentials.get()
 	assert(access_key and secret_key, "No access key or secret key set")
+
+	if security_token then
+		headers[request_headers.AWS_SECURITY_TOKEN] = security_token
+	end
 
 	-- Create a date for headers and the credential string
 	local amz_date = headers[request_headers.AWS_DATE_HEADER]
-	local date_stamp = os.date('!%Y%m%d') -- Date w/o time, used in credential scope
+	local date_stamp = amz_date:match("(%d*)T.*") -- Date w/o time, used in credential scope
 
 	-- ************* TASK 1: CREATE A CANONICAL REQUEST *************
 	-- http://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
+	-- canonical uri, the part from domain to query
+	local split_request_uri = strut.split(request_uri, "?")
+	local canonical_uri = "/" .. strut.urlencode(split_request_uri[1]:sub(2))
+	local canonical_querystring = create_canonical_query_string(split_request_uri[2] or "")
+	local canonical_headers, signed_headers = create_canonical_and_signed_headers(headers)
 
-	-- Step 1 is to define the verb (GET, POST, etc.)--already done.
-
-	-- Step 2: Create canonical URI--the part of the URI from domain to query
-	-- string (use '/' if no path)
-	local canonical_uri = request_uri
-
-	-- Step 3: Create the canonical query string. In this example, request
-	-- parameters are passed in the body of the request and the query string
-	-- is blank.
-	local canonical_querystring = ''
-
-	-- Step 4: Create the canonical headers. Header names must be trimmed
-	-- and lowercase, and sorted in code point order from low to high.
-	-- Step 5: Create the list of signed headers. This lists the headers
-	-- in the canonical_headers list, delimited with ";" and in alpha order.
-	-- Note: The request can include any headers; canonical_headers and
-	-- signed_headers include those that you want to be included in the
-	-- hash of the request. "Host" and "x-amz-date" are always required.
-	local canonical_headers, signed_headers = get_canonical_and_signed_headers(headers)
-
-	-- Step 6: Create payload hash. In this example, the payload (body of
-	-- the request) contains the request parameters.
-	--local payload_hash = hashlib.sha256(request_parameters).hexdigest()
+	-- Create payload hash. The payload (body of the request) contains
+	-- the request parameters.
 	local payload_hash = sha2_sha256().update(Stream.fromString(request_parameters)).finish().asHex()
 
-	-- Step 7: Combine elements to create create canonical request
+	-- Combine elements to create create canonical request
 	local canonical_request = method .. '\n'
 		.. canonical_uri .. '\n'
 		.. canonical_querystring .. '\n'
 		.. canonical_headers .. '\n'
 		.. signed_headers .. '\n'
 		.. payload_hash
-
+	
 	-- ************* TASK 2: CREATE THE STRING TO SIGN*************
 	-- Match the algorithm to the hashing algorithm you use, either SHA-1 or
 	-- SHA-256 (recommended)
@@ -116,10 +138,10 @@ function M.sign_post_request_v4(request_uri, request_parameters, headers, settin
 		.. amz_date .. '\n'
 		.. credential_scope .. '\n'
 		.. sha2_sha256().update(Stream.fromString(canonical_request)).finish().asHex()
-
+		
 	-- ************* TASK 3: CALCULATE THE SIGNATURE *************
 	-- Create the signing key using the function defined above.
-	local signing_key = get_signature_key(secret_key, date_stamp, region, service)
+	local signing_key = M.get_signature_key(secret_key, date_stamp, region, service)
 
 	-- Sign the string_to_sign using the signing_key
 	local signature = hmac()

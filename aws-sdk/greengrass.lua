@@ -5237,6 +5237,7 @@ function M.init(config)
 	settings.protocol = M.metadata.protocol
 	settings.region = config.region
 	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.signature_version = M.metadata.signature_version
 	settings.uri = (config.scheme or "https") .. "://" .. settings.endpoint
 end
 
