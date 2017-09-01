@@ -1,3 +1,4 @@
+-- String Utilities
 
 local M = {}
 

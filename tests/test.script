@@ -1,33 +1,14 @@
 local deftest = require "deftest.deftest"
 local test_request_signer = require "tests.test_request_signer"
+local test_content_encoder = require "tests.test_content_encoder"
+local test_content_type = require "tests.test_content_type"
+local test_credentials = require "tests.test_credentials"
 
 
 function init(self)
 	deftest.add(test_request_signer)
+	deftest.add(test_content_encoder)
+	deftest.add(test_content_type)
+	deftest.add(test_credentials)
 	deftest.run()
-end
-
-function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Remove this function if not needed
-end
-
-function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Remove this function if not needed
-end
-
-function on_input(self, action_id, action)
-	-- Add input-handling code here
-	-- Remove this function if not needed
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Remove this function if not needed
 end

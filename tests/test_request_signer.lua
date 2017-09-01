@@ -28,7 +28,7 @@ return function()
 		end)
 
 		-- http://docs.aws.amazon.com/general/latest/gr/signature-v4-examples.html#signature-v4-examples-other
-		it("should be able to create a valid signature key", function()
+		it("should create a valid signature key", function()
 			local key = "wJalrXUtnFEMI/K7MDENG+bPxRfiCYEXAMPLEKEY"
 			local date_stamp = "20120215"
 			local region_name = "us-east-1"
@@ -85,7 +85,7 @@ return function()
 				("%s:\nExpected %s\nActual:     %s"):format(name, expected_authorization, authorization)
 		end
 				
-		it("should be able to sign POST requests", function()
+		it("should sign POST requests properly", function()
 			assert(run_test("tests/aws-sig-v4-test-suite", "post-header-key-case"))
 			assert(run_test("tests/aws-sig-v4-test-suite", "post-header-key-sort"))
 			assert(run_test("tests/aws-sig-v4-test-suite", "post-header-value-case"))
@@ -98,7 +98,7 @@ return function()
 			assert(run_test("tests/aws-sig-v4-test-suite", "post-x-www-form-urlencoded-parameters"))
 		end)
 				
-		it("should be able to sign GET requests", function()
+		it("should sign GET requests properly", function()
 			assert(run_test("tests/aws-sig-v4-test-suite", "get-header-key-duplicate"))
 			--assert(run_test("tests/aws-sig-v4-test-suite", "get-header-value-multiline"))
 			assert(run_test("tests/aws-sig-v4-test-suite", "get-header-value-order"))
