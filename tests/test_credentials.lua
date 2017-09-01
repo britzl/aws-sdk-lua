@@ -30,7 +30,7 @@ return function()
 			assert(not ok and err)
 		end)
 		
-		it("should refresh credentials upon request", function()
+		it("should be possible to refresh credentials from provider", function()
 			local provider = {
 				get = function() end,
 				refresh = function(fn)
@@ -38,8 +38,13 @@ return function()
 				end
 			}
 			
+			mock.mock(provider)
 			credentials.provider(provider)
 			credentials.refresh_sync()
+			assert(provider.refresh.calls == 1)
+			credentials.refresh_sync()
+			assert(provider.refresh.calls == 2)
+
 			local access, secret, token = credentials.get()
 			assert(access == "fooaccess")
 			assert(secret == "barsecret")
@@ -54,9 +59,33 @@ return function()
 			assert(token == "token")
 		end)
 		
+		it("should be possible to replace existing credentials", function()
+			credentials.set("fooaccess", "barsecret", "token")
+			credentials.set("a", "b", "c")
+			local access, secret, token = credentials.get()
+			assert(access == "a" and secret == "b" and token == "c")
+		end)
+		
+		it("should be possible to set credentials manually and omitt token", function()
+			credentials.set("fooaccess", "barsecret")
+			local access, secret, token = credentials.get()
+			assert(access == "fooaccess")
+			assert(secret == "barsecret")
+			assert(token == nil)
+		end)
+		
+		it("should be possible to replace existing credentials and omitt token", function()
+			credentials.set("fooaccess", "barsecret", "token")
+			credentials.set("a", "b")
+			local access, secret, token = credentials.get()
+			assert(access == "a" and secret == "b" and token == nil)
+		end)
+		
 		
 		it("should be possible to check if no credentials exists", function()
 			assert(credentials.is_empty())
+			credentials.set("fooaccess", "barsecret", "token")
+			assert(not credentials.is_empty())
 		end)
 	end)
 end

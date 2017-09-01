@@ -19,7 +19,6 @@ function M.post(base_uri, request_uri, input, headers, settings, cb)
 			local authorization = request_signer.sign_request_v4("POST", request_uri, post_data, headers, settings)
 			headers[request_headers.AUTHORIZATION_HEADER] = authorization
 			headers[request_headers.HOST_HEADER] = nil
-			pprint(headers)
 		else
 			print(("Unsupported signatureVersion %s"):format(settings.signature_version or "foo"))
 			pprint(settings)
