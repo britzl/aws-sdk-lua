@@ -3,6 +3,7 @@ local test_request_signer = require "tests.test_request_signer"
 local test_content_encoder = require "tests.test_content_encoder"
 local test_content_type = require "tests.test_content_type"
 local test_credentials = require "tests.test_credentials"
+local test_basic_credentials = require "tests.test_basic_credentials"
 
 
 function init(self)
@@ -10,5 +11,6 @@ function init(self)
 	deftest.add(test_content_encoder)
 	deftest.add(test_content_type)
 	deftest.add(test_credentials)
+	deftest.add(test_basic_credentials)
 	deftest.run()
 end

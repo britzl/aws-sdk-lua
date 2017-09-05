@@ -8,7 +8,7 @@ return function()
 	local bad_provider2 = { refresh = function() end }
 	local bad_provider3 = {}
 
-	describe("content type", function()
+	describe("credentials", function()
 		before(function()
 			credentials = require "aws-sdk.core.credentials"
 			mock.mock(ok_provider)
@@ -20,14 +20,10 @@ return function()
 		end)
 
 		it("should accept valid credential providers and reject invalid ones", function()
-			local ok, err = pcall(function() credentials.provider(ok_provider) end)
-			assert(ok and not err)
-			local ok, err = pcall(function() credentials.provider(bad_provider1) end)
-			assert(not ok and err)
-			local ok, err = pcall(function() credentials.provider(bad_provider2) end)
-			assert(not ok and err)
-			local ok, err = pcall(function() credentials.provider(bad_provider3) end)
-			assert(not ok and err)
+			assert_not_error(function() credentials.provider(ok_provider) end)
+			assert_error(function() credentials.provider(bad_provider1) end)
+			assert_error(function() credentials.provider(bad_provider2) end)
+			assert_error(function() credentials.provider(bad_provider3) end)
 		end)
 		
 		it("should be possible to refresh credentials from provider", function()

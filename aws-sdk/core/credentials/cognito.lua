@@ -36,9 +36,9 @@ function M.from_cognito_identity(identity_id)
 				access_key_id = response.Credentials.AccessKeyId
 				secret_access_key = response.Credentials.SecretKey
 				session_token = response.Credentials.SessionToken
-				cb(access_key_id, secret_access_key, session_token)
+				if cb then cb(access_key_id, secret_access_key, session_token) end
 			else
-				cb(nil, nil)
+				if cb then cb(nil, nil) end
 			end
 		end)
 	end
@@ -67,7 +67,7 @@ function M.from_cognito_identity_pool(identity_pool_id)
 			print("GetIdAsync")
 			pprint(response)
 			if error_message then
-				cb(nil, error_message)
+				if cb then cb(nil, error_message) end
 				return
 			end
 			refresh(response.IdentityId, function(response, error_message)
@@ -76,9 +76,9 @@ function M.from_cognito_identity_pool(identity_pool_id)
 					secret_access_key = response.Credentials.SecretKey
 					session_token = response.Credentials.SessionToken
 					print("refreshed", access_key_id, secret_access_key, session_token)
-					cb(access_key_id, secret_access_key, session_token)
+					if cb then cb(access_key_id, secret_access_key, session_token) end
 				else
-					cb(nil, nil)
+					if cb then cb(nil, nil) end
 				end
 			end)
 		end)

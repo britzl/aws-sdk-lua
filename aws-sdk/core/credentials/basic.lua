@@ -17,7 +17,7 @@ function M.from_defold_game_project()
 		access_key_id = sys.get_config("aws.access_key_id")
 		secret_access_key = sys.get_config("aws.secret_access_key")
 		assert(access_key_id and secret_access_key, "aws.access_key_id or aws.secret_access_key missing")
-		cb(access_key_id, secret_access_key)
+		if cb then cb(access_key_id, secret_access_key) end
 	end
 
 	return provider
@@ -40,14 +40,14 @@ function M.from_env(prefix)
 		access_key_id = os.getenv(prefix .. "ACCESS_KEY_ID")
 		secret_access_key = os.getenv(prefix .. "SECRET_ACCESS_KEY")
 		assert(access_key_id and secret_access_key, ("%sACCESS_KEY_ID or %sSECRET_ACCESS_KEY missing"):format(prefix, prefix))
-		cb(access_key_id, secret_access_key)
+		if cb then cb(access_key_id, secret_access_key) end
 	end
 
 	return provider
 end
 
 
-function M.from_file(filename)
+function M.from_json_file(filename)
 	local provider = {}
 
 	local access_key_id
@@ -67,7 +67,7 @@ function M.from_file(filename)
 		access_key_id = ok and accessKeyId
 		secret_access_key = ok and secretAccessKey
 		assert(access_key_id and secret_access_key, ("Unable to read credentials from %s"):format(filename))
-		cb(access_key_id, secret_access_key)
+		if cb then cb(access_key_id, secret_access_key) end
 	end
 
 	return provider
